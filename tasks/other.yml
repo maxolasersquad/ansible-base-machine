@@ -1,0 +1,27 @@
+---
+- name: Add NeoVim PPA
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+
+- name: Install additional packages
+  package:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+      - git
+      - nvim
+      - zsh
+      - byobu
+
+- name: Set NeoVim as default editor
+  alternatives:
+    name: editor
+    path: /usr/bin/nvim
+
+- name: Install other optional packages
+  package:
+    name: "{{ other_packages }}"
+    state: present
+    update_cache: yes
