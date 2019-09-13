@@ -2,3 +2,4 @@
 admin_users: []
 standard_users: []
 other_packages: []
+desktop: false

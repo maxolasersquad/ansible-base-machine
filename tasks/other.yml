@@ -3,6 +3,11 @@
   apt_repository:
     repo: ppa:neovim-ppa/stable
 
+- name: Add LibreOffice PPA
+  apt_repository:
+    repo: ppa:libreoffice/ppa
+  when: desktop|bool
+
 - name: Install additional packages
   package:
     name: "{{ packages }}"
@@ -15,7 +20,7 @@
       - zsh
       - byobu
 
-- name: Set NeoVim as default editor
+- name: Set NeoVim as the default editor
   alternatives:
     name: editor
     path: /usr/bin/nvim
