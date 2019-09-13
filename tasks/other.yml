@@ -3,6 +3,10 @@
   apt_repository:
     repo: ppa:neovim-ppa/stable
 
+- name: Add Byobu PPA
+  apt_repository:
+    repo: ppa:byobu/ppa
+
 - name: Add LibreOffice PPA
   apt_repository:
     repo: ppa:libreoffice/ppa
