@@ -11,12 +11,12 @@ This role is only maintained for Ubuntu GNU/Linux 18.04 and above.
 Role Variables
 --------------
 
-
 | Parameters     | Default Value | Comments                                    |
 |----------------|---------------|---------------------------------------------|
 | admin_users    | []            | An array of users with sudo permissions.    |
 | standard_users | []            | An array of users without sudo permission.  |
 | other_packages | []            | An array of packages to install by default. |
+| hostname       |               | The hostname of the machine                 |
 
 Dependencies
 ------------
@@ -39,6 +39,7 @@ Example Playbook
       - emacs
       - htop
       - cowsay
+    hostname: ramesses
 ```
 
 License
