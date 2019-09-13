@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: base-machine
   author: David Baucum
   description: Base configuration for a new Ubuntu GNU/Linux box
 
