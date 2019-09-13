@@ -16,7 +16,7 @@
   package:
     name: "{{ packages }}"
     state: present
-    update_cache: yes
+    update_cache: "yes"
   vars:
     packages:
       - git
@@ -33,4 +33,4 @@
   package:
     name: "{{ other_packages }}"
     state: present
-    update_cache: yes
+    update_cache: "yes"
