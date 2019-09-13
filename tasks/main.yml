@@ -1,6 +1,6 @@
 ---
+- include: other.yml
 - include: security.yml
 - include: hostname.yml
 - include: admin_users.yml
 - include: standard_users.yml
-- include: other.yml
