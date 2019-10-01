@@ -56,7 +56,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "^AllowUsers"
-    line: "AllowUsers {{ base_ssh_allowed_users | flatten | join(" ") }}"
+    line: 'AllowUsers {{ base_ssh_allowed_users | flatten | join(" ") }}'
     state: present
   notify: restart sshd
 
