@@ -20,7 +20,7 @@
   vars:
     packages:
       - git
-      - nvim
+      - neovim
       - zsh
       - byobu
 
