@@ -34,3 +34,9 @@
     name: "{{ other_packages }}"
     state: present
     update_cache: "yes"
+
+- name: Update all packages on first run
+  apt:
+    upgrade: safe
+  when: hostname != ansible_hostname
+  # Only run the safe upgrade on the first run of this script.
