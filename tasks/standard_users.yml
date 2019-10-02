@@ -29,7 +29,7 @@
   with_items: "{{ admin_users }}"
 
 - name: Enable byobu
-  shell: byobu-enable
+  command: byobu-enable
   become: "yes"
   become_user: "{{ item.name }}"
   with_items: "{{ changed_users.results }}"
@@ -41,4 +41,4 @@
   become: "yes"
   become_user: "{{ item.item.name }}"
   with_items: "{{ changed_users.results }}"
-  when: item.changed == true
+  when: item.changed|bool
