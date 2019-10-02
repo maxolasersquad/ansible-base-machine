@@ -1,7 +1,7 @@
 ---
 - name: Create user groups
   group:
-    name: " {{ item.name }} "
+    name: "{{ item.name }}"
     state: present
   with_items: "{{ standard_users }}"
 
