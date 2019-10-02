@@ -1,5 +1,6 @@
 ---
 admin_users: []
 standard_users: []
+allowed_ssh_users: []
 other_packages: []
 desktop: false

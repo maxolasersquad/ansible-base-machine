@@ -11,12 +11,13 @@ This role is only maintained for Ubuntu GNU/Linux 18.04 and above.
 Role Variables
 --------------
 
-| Parameters     | Default Value | Comments                                    |
-|----------------|---------------|---------------------------------------------|
-| admin_users    | []            | An array of users with sudo permissions.    |
-| standard_users | []            | An array of users without sudo permission.  |
-| other_packages | []            | An array of packages to install by default. |
-| hostname       |               | The hostname of the machine                 |
+| Parameters        | Default Value | Comments                                                                                             |
+|-------------------|---------------|------------------------------------------------------------------------------------------------------|
+| admin_users       | []            | An array of users with sudo permissions.                                                             |
+| allowed_ssh_users | []            | A list of additional users not listed in admin_users or standard_users that are also allowed to ssh. |
+| standard_users    | []            | An array of users without sudo permission.                                                           |
+| other_packages    | []            | An array of packages to install by default.                                                          |
+| hostname          |               | The hostname of the machine                                                                          |
 
 Dependencies
 ------------

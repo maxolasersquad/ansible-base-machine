@@ -52,13 +52,18 @@
     state: present
   notify: restart sshd
 
+- name: Create list of users allowed to ssh
+  set_fact:
+    allowed_ssh_users: "{{ allowed_ssh_users }} + [ '{{ item.name }}' ]"
+  with_items: "{{ admin_users + standard_users }}"
+
 - name: Restrict users allowed to ssh.
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "^AllowUsers"
-    line: 'AllowUsers {{ base_ssh_allowed_users | flatten | join(" ") }}'
+    line: 'AllowUsers {{ allowed_ssh_users | flatten | join(" ") }}'
     state: present
-  notify: restart sshd
+  notify: restart ssh
 
 - name: Disallow root SSH access
   lineinfile:
@@ -66,4 +71,4 @@
     regexp: "^PermitRootLogin"
     line: "PermitRootLogin no"
     state: present
-  notify: restart sshd
+  notify: restart ssh
