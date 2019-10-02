@@ -8,7 +8,7 @@
 - name: Create users
   user:
     name: "{{ item.name }}"
-    shell: /bin/bash
+    shell: /usr/bin/zsh
     group: "{{ item.name }}"
     groups: sudo
     password: "{{( item.name + '9032' ) | password_hash('sha512') }}"
@@ -16,7 +16,7 @@
     state: present
   register: changed_users
   with_items: "{{ admin_users }}"
-  
+
 - name: Expire new user's password
   command: "chage -d 0 {{ item.item.name }}"
   with_items: "{{ changed_users.results }}"
@@ -36,3 +36,10 @@
   with_items: "{{ changed_users.results }}"
   when: item.changed|bool
   failed_when: false
+
+- name: Setup oh-my-zsh
+  shell: echo y | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  become: "yes"
+  become_user: "{{ item.item.name }}"
+  with_items: "{{ changed_users.results }}"
+  when: item.changed|bool
