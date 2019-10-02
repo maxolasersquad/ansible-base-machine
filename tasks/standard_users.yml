@@ -37,7 +37,11 @@
   failed_when: false
 
 - name: Setup oh-my-zsh
-  shell: echo y | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  shell: |
+    set -o pipefail
+    echo y | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    executable: /bin/bash
   become: "yes"
   become_user: "{{ item.item.name }}"
   with_items: "{{ changed_users.results }}"
