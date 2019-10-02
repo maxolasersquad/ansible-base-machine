@@ -10,7 +10,7 @@
     name: "{{ item.name }}"
     shell: /usr/bin/zsh
     group: "{{ item.name }}"
-    password: "{{( item.name + '9032' ) | password_hash('sha512') }}"
+    password: "{{ (item.name + '9032') | password_hash('sha512') }}"
     update_password: on_create
     state: present
   register: changed_users
