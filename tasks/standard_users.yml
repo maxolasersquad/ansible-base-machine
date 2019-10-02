@@ -17,21 +17,21 @@
   with_items: "{{ standard_users }}"
 
 - name: Expire new user's password
-  command: "chage -d 0 {{ item.item }}"
+  command: "chage -d 0 {{ item.item.name }}"
   with_items: "{{ changed_users.results }}"
-  when: item.changed == true
+  when: item.changed|bool
 
 - name: Add authorized keys for users
   authorized_key:
     user: "{{ item.name }}"
-    key: "{{ lookup('file', 'ssh_keys/' + item.name + '_id_rsa.pub' ) }}"
+    key: "{{ item.pubkey }}"
     state: present
-  with_items: "{{ standard_users }}"
+  with_items: "{{ admin_users }}"
 
 - name: Enable byobu
   shell: byobu-enable
   become: "yes"
   become_user: "{{ item.name }}"
-  with_items: "{{ standard_users }}"
-  when: item.changed == true
+  with_items: "{{ changed_users.results }}"
+  when: item.changed|bool
   failed_when: false
