@@ -34,6 +34,7 @@
     name: "{{ other_packages }}"
     state: present
     update_cache: "yes"
+  when: other_packages|length > 0
 
 - name: Update all packages on first run
   apt:
