@@ -63,7 +63,7 @@
     regexp: "^AllowUsers"
     line: 'AllowUsers {{ allowed_ssh_users | flatten | join(" ") }}'
     state: present
-  notify: restart ssh
+  notify: restart sshd
 
 - name: Disallow root SSH access
   lineinfile:
@@ -71,4 +71,4 @@
     regexp: "^PermitRootLogin"
     line: "PermitRootLogin no"
     state: present
-  notify: restart ssh
+  notify: restart sshd
