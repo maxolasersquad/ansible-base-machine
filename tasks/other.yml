@@ -23,6 +23,7 @@
       - neovim
       - zsh
       - byobu
+      - python3-pip
 
 - name: Set NeoVim as the default editor
   alternatives:
